@@ -31,7 +31,5 @@ spec:
             - containerPort: 8080
           resources: {}
           imagePullPolicy: Always
-      #imagePullSecrets:
-       # - name: regcred
       restartPolicy: Always
 status: {}
