@@ -30,6 +30,5 @@ spec:
           ports:
             - containerPort: 8080
           resources: {}
-          imagePullPolicy: Always
       restartPolicy: Always
 status: {}
