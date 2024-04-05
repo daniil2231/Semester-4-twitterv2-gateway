@@ -1,0 +1,40 @@
+{
+  "Routes": [
+    //User API
+    {
+      "DownstreamPathTemplate": "/api/User/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 8081
+        }
+      ],
+      "UpstreamPathTemplate": "/User/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "UPDATE",
+        "DELETE"
+      ]
+    },
+    //Tweet API
+    {
+      "DownstreamPathTemplate": "/api/Tweet",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8082
+        }
+      ],
+      "UpstreamPathTemplate": "/Tweet/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "UPDATE",
+        "DELETE"
+      ]
+    }
+  ]
+}
