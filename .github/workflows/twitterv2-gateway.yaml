@@ -43,5 +43,5 @@ jobs:
               name: Deploys application
               with:
                 action: deploy
-                images: daniil2231/gateway
+                images: daniil2231/twitterv2:gateway
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
