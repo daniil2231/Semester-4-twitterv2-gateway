@@ -1,5 +1,18 @@
 {
   "Routes": [
+    // Authentication API
+    {
+      "UpstreamPathTemplate": "/api/Account",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth-service",
+          "Port": 8088
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Account"
+    },
     //User API
     {
       "DownstreamPathTemplate": "/api/User/{everything}",
@@ -20,11 +33,11 @@
     },
     //Tweet API
     {
-      "DownstreamPathTemplate": "/api/Tweet",
+      "DownstreamPathTemplate": "/api/Tweet/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "tweet-service",
           "Port": 8082
         }
       ],
@@ -32,9 +45,30 @@
       "UpstreamHttpMethod": [
         "GET",
         "POST",
-        "UPDATE",
         "DELETE"
       ]
+    },
+    //Auth API
+    {
+      "DownstreamPathTemplate": "/api/Auth/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth-service",
+          "Port": 8088
+        }
+      ],
+      "UpstreamPathTemplate": "/Auth/{everything}",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     }
   ]
 }
